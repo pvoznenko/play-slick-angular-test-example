@@ -4,6 +4,8 @@
 
 Main goal of this Example is to show how to test Play Framework in memory using H2 and Slick and keep MySQL as main database.
 
+Also contain one-page application RequireJS + AngularJS with Bootstrap, MySQL and Slick.
+
 This is an Example Scala Play application. Application built on [Play Framework](http://www.playframework.com) (Scala), [Slick](http://slick.typesafe.com/), 
 [Webjars](https://github.com/webjars), [AngularJS](https://angularjs.org/), [RequireJS](http://requirejs.org), 
 for test using [Spec2](http://etorreborre.github.io/specs2/) that runs in [H2](http://www.h2database.com) in-memory database.
