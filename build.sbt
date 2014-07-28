@@ -1,6 +1,6 @@
 name := """PlaySlickAngularTestExample"""
 
-version := "0.0.1"
+version := "0.0.2"
 
 // Scala Version, Play supports both 2.10 and 2.11
 //scalaVersion := "2.10.4"

@@ -1,8 +1,12 @@
 /**
  * Manages all sub-modules so other RequireJS modules only have to import the package.
  */
-define(['angular', './routes', './services', './controllers'], function(angular) {
-  'use strict';
+define(['angular', './routes', './controllers'], function(angular, routes, controllers) {
+    'use strict';
 
-  return angular.module('report', ['ngRoute', 'report.routes', 'report.services', 'report.controllers']);
+    var mod = angular.module('report', ['ngRoute', 'report.routes']);
+
+    mod.controller('ReportCtrl', controllers.ReportCtrl);
+
+    return mod;
 });

@@ -1,8 +1,7 @@
-define(['angular'], function(angular) {
+define([], function() {
     'use strict';
-    var mod = angular.module('report.controllers', []);
 
-    mod.controller('ReportCtrl', ['$scope', '$filter', 'playRoutes', 'ngTableParams', function($scope, $filter, playRoutes, ngTableParams) {
+    var ReportCtrl = function($scope, $filter, playRoutes, ngTableParams) {
         $scope.worlds = [];
         $scope.world = '';
         $scope.totalDetected = 0;
@@ -70,7 +69,9 @@ define(['angular'], function(angular) {
         playRoutes.controllers.Report.worldsList().get().then(function(response) {
             $scope.worlds = response.data;
         });
-    }]);
+    };
 
-    return mod;
+    ReportCtrl.$inject = ['$scope', '$filter', 'playRoutes', 'ngTableParams'];
+
+    return {ReportCtrl: ReportCtrl};
 });

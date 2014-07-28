@@ -1,5 +1,5 @@
 define(['angular', 'home', 'report'], function(angular) {
-  'use strict';
+    'use strict';
 
-  return angular.module('app', ['home', 'report']);
+    return angular.module('app', ['home', 'report']);
 });
