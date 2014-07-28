@@ -1,6 +1,6 @@
 # Play Slick AngularJS Bootstrap H2 Tests Example
 
-[![Build Status][https://travis-ci.org/fosco-maestro/play-slick-angular-test-example.svg]][https://travis-ci.org/fosco-maestro/play-slick-angular-test-example]
+[![Build Status][1]][2]
 
 Main goal of this Example is to show how to test Play Framework in memory using H2 and Slick and keep MySQL as main database.
 
@@ -50,3 +50,6 @@ $ sbt test
 Copyright (C) 2014 Pavlo Voznenko.
 
 Distributed under the MIT License.
+
+1: https://travis-ci.org/fosco-maestro/play-slick-angular-test-example.svg
+2: https://travis-ci.org/fosco-maestro/play-slick-angular-test-example
