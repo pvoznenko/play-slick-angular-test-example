@@ -1,6 +1,6 @@
-name := """PlaySlickAngularTestExample"""
+name := """PlaySlickAngularBootstrapH2TestsExample"""
 
-version := "0.0.2"
+version := "0.1.3"
 
 // Scala Version, Play supports both 2.10 and 2.11
 //scalaVersion := "2.10.4"
