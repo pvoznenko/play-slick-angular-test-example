@@ -25,6 +25,12 @@ As base template for application used [Marius Soutier's](https://github.com/mari
 * Install sbt ([http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html](http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html));
 * Install mysql server.
 
+## Activator 
+
+You can get this example through [Activator](https://typesafe.com/activator).
+For more information please use following url that explains how to get this template on your computer 
+step-by-step: [https://typesafe.com/activator/template/play-slick-angular-test-example](https://typesafe.com/activator/template/play-slick-angular-test-example)
+
 ## Configuration
 * Create mysql database 
 * Modify config `conf/application.conf`
