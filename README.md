@@ -8,7 +8,7 @@ Also contain one-page application RequireJS + AngularJS with Bootstrap, MySQL an
 
 This is an Example Scala Play application. Application built on [Play Framework](http://www.playframework.com) (Scala), [Slick](http://slick.typesafe.com/), 
 [Webjars](https://github.com/webjars), [AngularJS](https://angularjs.org/), [RequireJS](http://requirejs.org), 
-for test using [Spec2](http://etorreborre.github.io/specs2/) that runs in [H2](http://www.h2database.com) in-memory database.
+for test using [Specs2](http://etorreborre.github.io/specs2/) that runs in [H2](http://www.h2database.com) in-memory database.
 
 As base template for application used [Marius Soutier's](https://github.com/mariussoutier) ["Example application for Play+AngularJS+RequireJS"](https://github.com/mariussoutier/play-angular-require-seed).
 
@@ -16,7 +16,7 @@ As base template for application used [Marius Soutier's](https://github.com/mari
 1. [Playframework 2](http://www.playframework.com), [WebJars](http://www.webjars.org),
    [RequireJS](http://www.requirejs.org) and [AngularJS](http://www.angularjs.org) together;
 2. In running mode using [Slick](http://slick.typesafe.com/) for work with [MySQL](http://www.mysql.com/);
-3. For testing application using [Spec2](http://etorreborre.github.io/specs2/) and run all tests in [H2](http://www.h2database.com) in-memory database;
+3. For testing application using [Specs2](http://etorreborre.github.io/specs2/) and run all tests in [H2](http://www.h2database.com) in-memory database;
 4. For frontend application using [Bootstrap](http://getbootstrap.com/) with [ngTable](http://bazalt-cms.com/ng-table/) and for DatePickers [Angular UI Bootstrap](http://angular-ui.github.io/).
 
 ## Installation
