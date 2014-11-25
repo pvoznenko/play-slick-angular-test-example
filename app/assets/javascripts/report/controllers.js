@@ -51,7 +51,7 @@ define([], function() {
                     field = sortedField,
                     sort = params.sorting()[sortedField];
 
-                playRoutes.controllers.Report.reports(offset, limit, fromDate, toDate, world, field, sort).get().then(function(response) {
+                playRoutes.controllers.Reports.reports(offset, limit, fromDate, toDate, world, field, sort).get().then(function(response) {
                     $scope.totalDetected = response.data.totalDetected || 0;
                     $scope.totalBanned = response.data.totalBanned || 0;
                     $scope.totalDeleted = response.data.totalDeleted || 0;
@@ -66,7 +66,7 @@ define([], function() {
             $scope.tableParams.reload();
         };
 
-        playRoutes.controllers.Report.worldsList().get().then(function(response) {
+        playRoutes.controllers.Reports.worldsList().get().then(function(response) {
             $scope.worlds = response.data;
         });
     };

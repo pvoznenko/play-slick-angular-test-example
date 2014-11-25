@@ -1,28 +1,13 @@
 package controllers
 
-import models.Reports._
-
-import play.api.db.slick._
-import play.api.db.slick.Config.driver.simple._
 import play.api.test._
 import play.api.test.Helpers._
-
 import org.specs2.mutable._
-import org.specs2.execute.{Result, AsResult}
 
-abstract class WithDbData extends WithApplication(FakeApplication(additionalConfiguration = inMemoryDatabase())) {
-  override def around[T: AsResult](t: => T): Result = super.around {
-    prepareDbWithData()
-    t
-  }
-
-  def prepareDbWithData() = DB.withSession {
-    implicit session => DBReports ++= TestData.inputData
-  }
-}
+abstract class WithDbData extends WithApplication(FakeApplication(additionalConfiguration = inMemoryDatabase()))
 
 class ReportSpec extends Specification {
-  "Report Controller" should {
+  "Reports Controller" should {
     "on worldsList return list of worlds" in new WithDbData {
       val result = route(FakeRequest(GET, "/reports/worldsList")).get
 

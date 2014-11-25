@@ -1,38 +1,35 @@
-package models
+package dao
 
-import models.database.Reports
+import database.Reports
+import dto.Report
 import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
 import play.api.db.slick.Config.driver.simple._
-import play.api.db.slick._
-import play.api.Play.current
+import database.ReportsDatabase._
 
-case class ReportEntry(world: String, date: LocalDate, detected: Int, banned: Int, deleted: Int)
-
-object Reports {
-  val DBReports = TableQuery[Reports]
+object ReportsDAO {
   val dateFormatter = DateTimeFormat.forPattern("yyyy-MM-dd")
 
   implicit val dateColumnType = MappedColumnType.base[LocalDate, String]({ dateFormatter.print(_) }, { dateFormatter.parseLocalDate })
 
-  type Q = Query[Reports, ReportEntry, Seq]
+  type Q = Query[Reports, Report, Seq]
 
-  def getWorldsList: Seq[String] = DB.withSession { implicit session => DBReports.groupBy(_.world).map(_._1).sorted.run }
+  def getWorldsList: Seq[String] = reports.groupBy(_.world).map(_._1).sorted.run
 
   def getReports(offset: Int, limit: Int, fromDate: Option[String], toDate: Option[String], world: Option[String], field: Option[String], sort: Option[String]) =
-    DB.withSession { implicit session => getFilteredQuery(fromDate, toDate, world).sortBy(getReportSortField(_, field, sort)).drop(offset * limit).take(limit).run }
+    getFilteredQuery(fromDate, toDate, world).sortBy(getReportSortField(_, field, sort)).drop(offset * limit).take(limit).run
 
   def getTotalReports(fromDate: Option[String], toDate: Option[String], world: Option[String]) =
-    DB.withSession { implicit session => getFilteredQuery(fromDate, toDate, world).length.run }
+    getFilteredQuery(fromDate, toDate, world).length.run
 
   def getSumDetected(fromDate: Option[String], toDate: Option[String], world: Option[String]) =
-    DB.withSession { implicit session => getFilteredQuery(fromDate, toDate, world).map(_.detected).sum.run }
+    getFilteredQuery(fromDate, toDate, world).map(_.detected).sum.run
 
   def getSumBanned(fromDate: Option[String], toDate: Option[String], world: Option[String]) =
-    DB.withSession { implicit session => getFilteredQuery(fromDate, toDate, world).map(_.banned).sum.run }
+    getFilteredQuery(fromDate, toDate, world).map(_.banned).sum.run
 
   def getSumDeleted(fromDate: Option[String], toDate: Option[String], world: Option[String]) =
-    DB.withSession { implicit session => getFilteredQuery(fromDate, toDate, world).map(_.deleted).sum.run }
+    getFilteredQuery(fromDate, toDate, world).map(_.deleted).sum.run
 
   private[this] def getReportSortField(rep: Reports, field: Option[String], sort: Option[String]) = field.map {
       case "world" => rep.world
@@ -50,10 +47,11 @@ object Reports {
     } getOrElse rep.date.desc
 
   private[this] def getFilteredQuery(fromDate: Option[String], toDate: Option[String], world: Option[String]) =
-    Seq(filterRowBased[String, String](world, { case (row, w) => row.world === w }) _,
+    Seq(
+      filterRowBased[String, String](world, { case (row, w) => row.world === w }) _,
       filterRowBased[LocalDate, String](fromDate.map { dateFormatter.parseLocalDate }, { case (row, date) => row.date >= date }) _,
       filterRowBased[LocalDate, String](toDate.map { dateFormatter.parseLocalDate }, { case (row, date) => row.date <= date }) _
-    ).foldLeft(DBReports.asInstanceOf[Q]) { case (query, filter) => filter(query) }
+    ).foldLeft(reports.asInstanceOf[Q]) { case (query, filter) => filter(query) }
 
   private[this] def filterRowBased[I, C](inputOption: Option[I], filterColumn: (Reports, I) => Column[Boolean])(query: Q) =
     inputOption.map { input => query.filter(row => filterColumn(row, input)) } getOrElse query
