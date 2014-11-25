@@ -2,12 +2,12 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET   /                                            controllers.Report.index
-GET   /jsroutes.js                                 controllers.Report.jsRoutes()
+GET   /                                            controllers.Reports.index
+GET   /jsroutes.js                                 controllers.Reports.jsRoutes()
 
 # Report routes
-GET   /reports                                     controllers.Report.reports(offset:Int ?= 0, limit:Int ?= 25, fromDate: Option[String], toDate: Option[String], world: Option[String], field: Option[String], sort: Option[String])
-GET   /reports/worldsList                          controllers.Report.worldsList
+GET   /reports                                     controllers.Reports.reports(offset:Int ?= 0, limit:Int ?= 25, fromDate: Option[String], toDate: Option[String], world: Option[String], field: Option[String], sort: Option[String])
+GET   /reports/worldsList                          controllers.Reports.worldsList
 
 # Map static resources from the /public folder to the /assets URL path 
 GET   /assets/*file                                controllers.Assets.versioned(path="/public", file: Asset)

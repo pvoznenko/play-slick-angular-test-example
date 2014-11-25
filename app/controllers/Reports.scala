@@ -32,8 +32,8 @@ object Reports extends Controller {
 
   def jsRoutes(varName: String = "jsRoutes") = Action { implicit request =>
     Ok(Routes.javascriptRouter(varName)(
-      routes.javascript.Report.reports,
-      routes.javascript.Report.worldsList
+      routes.javascript.Reports.reports,
+      routes.javascript.Reports.worldsList
     )).as(JAVASCRIPT)
   }
 }
