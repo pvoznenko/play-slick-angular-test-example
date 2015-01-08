@@ -1,10 +1,23 @@
 package controllers
 
+import models.database.ReportsDatabase._
 import play.api.test._
 import play.api.test.Helpers._
 import org.specs2.mutable._
+import org.specs2.execute.{Result, AsResult}
+import play.api.db.slick._
+import play.api.db.slick.Config.driver.simple._
 
-abstract class WithDbData extends WithApplication(FakeApplication(additionalConfiguration = inMemoryDatabase()))
+abstract class WithDbData extends WithApplication(FakeApplication(additionalConfiguration = inMemoryDatabase())) {
+  override def around[T: AsResult](callback: => T): Result = super.around {
+    prepareDbWithData()
+    callback
+  }
+
+  def prepareDbWithData() = DB.withSession {
+    implicit session => reports ++= TestData.inputData
+  }
+}
 
 class ReportSpec extends Specification {
   "Reports Controller" should {

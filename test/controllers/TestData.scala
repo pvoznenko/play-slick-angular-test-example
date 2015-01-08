@@ -1,8 +1,19 @@
 package controllers
 
+import models.database.ReportEntity
 import play.api.libs.json.{JsNumber, Json, JsString, JsArray}
+import org.joda.time.LocalDate
 
 object TestData {
+  val inputData = Seq(
+    ReportEntity("de1", new LocalDate("2014-07-01"), 10, 4, 1),
+    ReportEntity("de1", new LocalDate("2014-07-02"), 12, 2, 0),
+    ReportEntity("en2", new LocalDate("2014-07-03"), 8, 1, 1),
+    ReportEntity("en2", new LocalDate("2014-07-04"), 14, 5, 3),
+    ReportEntity("ua", new LocalDate("2014-07-05"), 10, 3, 2),
+    ReportEntity("ru", new LocalDate("2014-07-06"), 4, 0, 0),
+    ReportEntity("dk", new LocalDate("2014-07-07"), 2, 2, 1))
+
   val expectedWorldsList = JsArray(Seq(JsString("de1"), JsString("dk"), JsString("en2"), JsString("ru"), JsString("ua")))
 
   val expectedReportsAll = Json.obj(
