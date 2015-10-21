@@ -13,6 +13,7 @@ for test using [Specs2](http://etorreborre.github.io/specs2/) that runs in [H2](
 As base template for application used [Marius Soutier's](https://github.com/mariussoutier) ["Example application for Play+AngularJS+RequireJS"](https://github.com/mariussoutier/play-angular-require-seed).
 
 ## Features
+
 1. [Playframework 2](http://www.playframework.com), [WebJars](http://www.webjars.org),
    [RequireJS](http://www.requirejs.org) and [AngularJS](http://www.angularjs.org) together;
 2. In running mode using [Slick](http://slick.typesafe.com/) for work with [MySQL](http://www.mysql.com/);
@@ -32,6 +33,7 @@ For more information please use following url that explains how to get this temp
 step-by-step: [https://typesafe.com/activator/template/play-slick-angular-test-example](https://typesafe.com/activator/template/play-slick-angular-test-example)
 
 ## Configuration
+
 * Create mysql database 
 * Modify config `conf/application.conf`
 
